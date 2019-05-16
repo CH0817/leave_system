@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: /leave_system
+spring:
+  profiles:
+    active: @profileActive@
+  jackson:
+    default-property-inclusion: non_null
+logging:
+  config: classpath:config/log/logback.xml
+  level:
+    tw:
+      com:
+        rex:
+          accountbookservice:
+            mapper: debug
+mybatis:
+  type-aliases-package: tw.com.rex.leave_system.model.dao
+  mapper-locations: mapper/*.xml
