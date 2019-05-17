@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS employee
 (
     id          VARCHAR(36) NOT NULL,
     name        VARCHAR(15) NOT NULL,
-    email       VARCHAR(50) NOT NULL,
     password    VARCHAR(36) NOT NULL,
     company     VARCHAR(36) NOT NULL,
     work_space  VARCHAR(36) NOT NULL,
@@ -138,6 +137,22 @@ CREATE TABLE IF NOT EXISTS company_address
 (
     zip        VARCHAR(10)  NOT NULL,
     address    VARCHAR(100) NOT NULL,
+    company_id VARCHAR(36),
+    PRIMARY KEY (company_id),
+    FOREIGN KEY (company_id) REFERENCES company (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS employee_email
+(
+    email       VARCHAR(100) NOT NULL,
+    employee_id VARCHAR(36),
+    PRIMARY KEY (employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS company_mail
+(
+    email      VARCHAR(100) NOT NULL,
     company_id VARCHAR(36),
     PRIMARY KEY (company_id),
     FOREIGN KEY (company_id) REFERENCES company (id)
