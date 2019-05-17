@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS `phone`;
 DROP TABLE IF EXISTS `mobile`;
 DROP TABLE IF EXISTS `fax`;
 DROP TABLE IF EXISTS `address`;
-DROP TABLE IF EXISTS `leave_log`;
+DROP TABLE IF EXISTS `leave_history`;
 DROP TABLE IF EXISTS `employee`;
 DROP TABLE IF EXISTS `company`;
 
@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS role
 (
     id          VARCHAR(36) NOT NULL,
     name        VARCHAR(15) NOT NULL UNIQUE,
+    description TEXT,
     create_date DATETIME    NOT NULL,
     update_date DATETIME,
     PRIMARY KEY (id)
@@ -51,79 +52,93 @@ CREATE TABLE IF NOT EXISTS role
 
 CREATE TABLE IF NOT EXISTS employee_role
 (
-    employee    VARCHAR(36) NOT NULL,
-    role        VARCHAR(36) NOT NULL,
+    employee_id VARCHAR(36) NOT NULL,
+    role_id     VARCHAR(36) NOT NULL,
     create_date DATETIME    NOT NULL,
     update_date DATETIME,
-    PRIMARY KEY (employee, role),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (role) REFERENCES role (id)
+    PRIMARY KEY (employee_id, role_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id),
+    FOREIGN KEY (role_id) REFERENCES role (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS leave_log
+CREATE TABLE IF NOT EXISTS leave_history
 (
-    id           VARCHAR(36) NOT NULL,
-    leave_date   DATE        NOT NULL,
-    hours        INT         NOT NULL,
-    create_date  DATETIME    NOT NULL,
-    update_date  DATETIME,
-    employee     VARCHAR(36) NOT NULL,
-    approve      VARCHAR(36),
-    approve_date DATETIME,
+    id                  VARCHAR(36) NOT NULL,
+    start_time          DATETIME    NOT NULL,
+    end_time            DATETIME    NOT NULL,
+    create_date         DATETIME    NOT NULL,
+    update_date         DATETIME,
+    employee_id         VARCHAR(36) NOT NULL,
+    approve_employee_id VARCHAR(36),
+    approve_date        DATETIME,
+    description         TEXT,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (approve) REFERENCES employee (id)
+    FOREIGN KEY (employee_id) REFERENCES employee (id),
+    FOREIGN KEY (approve_employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS phone
+CREATE TABLE IF NOT EXISTS employee_phone
 (
-    id          VARCHAR(36) NOT NULL,
     phone       VARCHAR(20) NOT NULL UNIQUE,
-    create_date DATETIME    NOT NULL,
-    update_date DATETIME,
-    employee    VARCHAR(36),
-    company     VARCHAR(36),
-    PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (company) REFERENCES company (id)
+    employee_id VARCHAR(36),
+    PRIMARY KEY (phone, employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS mobile
+CREATE TABLE IF NOT EXISTS company_phone
 (
-    id          VARCHAR(36) NOT NULL,
+    phone      VARCHAR(20) NOT NULL UNIQUE,
+    company_id VARCHAR(36),
+    PRIMARY KEY (phone, company_id),
+    FOREIGN KEY (company_id) REFERENCES company (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS employee_mobile
+(
     mobile      VARCHAR(20) NOT NULL UNIQUE,
-    create_date DATETIME    NOT NULL,
-    update_date DATETIME,
-    employee    VARCHAR(36),
-    company     VARCHAR(36),
-    PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (company) REFERENCES company (id)
+    employee_id VARCHAR(36),
+    PRIMARY KEY (mobile, employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS fax
+CREATE TABLE IF NOT EXISTS company_mobile
 (
-    id          VARCHAR(36) NOT NULL,
+    mobile     VARCHAR(20) NOT NULL UNIQUE,
+    company_id VARCHAR(36),
+    PRIMARY KEY (mobile, company_id),
+    FOREIGN KEY (company_id) REFERENCES company (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS employee_fax
+(
     fax         VARCHAR(20) NOT NULL UNIQUE,
-    create_date DATETIME    NOT NULL,
-    update_date DATETIME,
-    employee    VARCHAR(36),
-    company     VARCHAR(36),
-    PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (company) REFERENCES company (id)
+    employee_id VARCHAR(36),
+    PRIMARY KEY (fax, employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS address
+CREATE TABLE IF NOT EXISTS company_fax
 (
-    id          VARCHAR(36)  NOT NULL,
+    fax        VARCHAR(20) NOT NULL UNIQUE,
+    company_id VARCHAR(36),
+    PRIMARY KEY (fax, company_id),
+    FOREIGN KEY (company_id) REFERENCES company (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS employee_address
+(
     zip         VARCHAR(10)  NOT NULL,
     address     VARCHAR(100) NOT NULL,
-    create_date DATETIME     NOT NULL,
-    update_date DATETIME,
-    employee    VARCHAR(36),
-    company     VARCHAR(36),
-    PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id),
-    FOREIGN KEY (company) REFERENCES company (id)
+    employee_id VARCHAR(36),
+    PRIMARY KEY (employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS company_address
+(
+    zip        VARCHAR(10)  NOT NULL,
+    address    VARCHAR(100) NOT NULL,
+    company_id VARCHAR(36),
+    PRIMARY KEY (company_id),
+    FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
