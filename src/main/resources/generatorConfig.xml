@@ -7,7 +7,7 @@
     <classPathEntry
             location="C:\Users\Rex\.IntelliJIdea2019.1\config\jdbc-drivers\MariaDB Connector J\2.4.1\mariadb-java-client-2.4.1.jar"/>
 
-    <context id="mysql" defaultModelType="flat">
+    <context id="mysql" targetRuntime="MyBatis3Simple">
         <property name="javaFileEncoding" value="UTF-8"/>
         <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
@@ -26,7 +26,7 @@
         </javaTypeResolver>
 
         <javaModelGenerator targetPackage="tw.com.rex.leave_system.model.dao"
-                            targetProject="D:\Projects\Java\leave_system\src\main\java">
+                            targetProject="src/main/java">
             <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.BaseDao"/>
         </javaModelGenerator>
 
@@ -35,35 +35,63 @@
         <javaClientGenerator targetPackage="tw.com.rex.leave_system.mapper" type="XMLMAPPER"
                              targetProject="src/main/java"/>
 
-        <table tableName="role" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="company" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="phone" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="company_address" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Address"/>
         </table>
-        <table tableName="mobile" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="company_fax" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Fax"/>
         </table>
-        <table tableName="fax" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="company_mobile" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Mobile"/>
         </table>
-        <table tableName="address" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="leave_log" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Phone"/>
         </table>
         <table tableName="employee" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="company" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="employee_address" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Address"/>
+        </table>
+        <table tableName="employee_fax" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Fax"/>
+        </table>
+        <table tableName="employee_mobile" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Mobile"/>
+        </table>
+        <table tableName="employee_phone" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Phone"/>
+        </table>
+        <table tableName="employee_role" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="leave_history" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="role" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
