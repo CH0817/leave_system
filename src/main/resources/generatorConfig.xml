@@ -18,7 +18,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
-                        connectionURL="jdbc:mariadb://192.168.56.1:3333/leave_system" userId="rex"
+                        connectionURL="jdbc:mariadb://localhost:32768/leave_system" userId="root"
                         password="ji394su3"/>
 
         <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
@@ -42,22 +42,26 @@
         <table tableName="company_address" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Address"/>
+        </table>
+        <table tableName="company_email" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
         <table tableName="company_fax" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Fax"/>
         </table>
         <table tableName="company_mobile" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Mobile"/>
         </table>
         <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Phone"/>
+        </table>
+        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
         <table tableName="employee" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
@@ -66,22 +70,22 @@
         <table tableName="employee_address" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Address"/>
+        </table>
+        <table tableName="employee_email" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
         <table tableName="employee_fax" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Fax"/>
         </table>
         <table tableName="employee_mobile" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Mobile"/>
         </table>
         <table tableName="employee_phone" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <property name="rootClass" value="tw.com.rex.leave_system.model.dao.base.Phone"/>
         </table>
         <table tableName="employee_role" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
