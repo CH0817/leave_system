@@ -9,3 +9,4 @@ spring:
     username: root
     password: ji394su3
     schema: classpath:db/schema-dev.sql
+    initialization-mode: always
