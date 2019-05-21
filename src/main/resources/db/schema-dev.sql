@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS employee
     password      VARCHAR(36) NOT NULL,
     company_id    VARCHAR(36) NOT NULL,
     work_space_id VARCHAR(36),
-    manager       VARCHAR(36) NOT NULL,
+    manager_id    VARCHAR(36) NOT NULL,
     arrive_date   DATETIME    NOT NULL,
     leave_date    DATETIME,
     create_date   DATETIME    NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS employee
     PRIMARY KEY (id),
     FOREIGN KEY fk_employee_company (company_id) REFERENCES company (id),
     FOREIGN KEY fk_employee_work (work_space_id) REFERENCES company (id),
-    FOREIGN KEY (manager) REFERENCES employee (id)
+    FOREIGN KEY (manager_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
 ALTER TABLE company
@@ -71,18 +71,18 @@ CREATE TABLE IF NOT EXISTS employee_role
 
 CREATE TABLE IF NOT EXISTS leave_history
 (
-    id                  VARCHAR(36) NOT NULL,
-    start_time          DATETIME    NOT NULL,
-    end_time            DATETIME    NOT NULL,
-    create_date         DATETIME    NOT NULL,
-    update_date         DATETIME,
-    employee_id         VARCHAR(36) NOT NULL,
-    approve_employee_id VARCHAR(36),
-    approve_date        DATETIME,
-    description         TEXT,
+    id                 VARCHAR(36) NOT NULL,
+    start_time         DATETIME    NOT NULL,
+    end_time           DATETIME    NOT NULL,
+    create_date        DATETIME    NOT NULL,
+    update_date        DATETIME,
+    employee_id        VARCHAR(36) NOT NULL,
+    approve_manager_id VARCHAR(36),
+    approve_date       DATETIME,
+    description        TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id),
-    FOREIGN KEY (approve_employee_id) REFERENCES employee (id)
+    FOREIGN KEY (approve_manager_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS employee_phone
@@ -135,17 +135,17 @@ CREATE TABLE IF NOT EXISTS company_fax
 
 CREATE TABLE IF NOT EXISTS employee_email
 (
-    mail        VARCHAR(20) NOT NULL,
+    email        VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (mail, employee_id),
+    PRIMARY KEY (email, employee_id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS company_mail
+CREATE TABLE IF NOT EXISTS company_email
 (
-    mail       VARCHAR(20) NOT NULL,
+    email       VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (mail, company_id),
+    PRIMARY KEY (email, company_id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
