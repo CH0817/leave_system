@@ -3,30 +3,30 @@
 <mapper namespace="tw.com.rex.leave_system.mapper.EmployeeMapper">
     <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.Employee">
         <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
-        <result property="name" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="email" jdbcType="VARCHAR"/>
         <!--TODO-->
-        <result property="emails" column="email" jdbcType="String" javaType="VARCHAR"/>
-        <result property="password" column="email" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="emails" column="email" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="address" column="email" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="address" column="email" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="mobiles" column="email" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="mobiles" column="email" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="phones" column="email" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="phones" column="email" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="faxes" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="faxes" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="company" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="company" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="workSpace" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="workSpace" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="manager" column="name" jdbcType="String" javaType="VARCHAR"/>
-        <result property="arriveDate" column="arrive_date" jdbcType="Date" javaType="DATE"/>
-        <result property="leaveDate" column="leave_date" jdbcType="Date" javaType="DATE"/>
+        <!--<result property="manager" column="name" jdbcType="VARCHAR"/>-->
+        <result property="arriveDate" column="arrive_date" jdbcType="DATE"/>
+        <result property="leaveDate" column="leave_date" jdbcType="DATE"/>
         <!--TODO-->
-        <result property="roles" column="description" jdbcType="String" javaType="VARCHAR"/>
-        <result property="note" column="description" jdbcType="String" javaType="VARCHAR"/>
-        <result property="createDate" column="create_date" jdbcType="Date" javaType="DATE"/>
-        <result property="updateDate" column="update_date" jdbcType="Date" javaType="DATE"/>
+        <!--<result property="roles" column="description" jdbcType="VARCHAR"/>-->
+        <result property="note" column="description" jdbcType="VARCHAR"/>
+        <result property="createDate" column="create_date" jdbcType="DATE"/>
+        <result property="updateDate" column="update_date" jdbcType="DATE"/>
     </resultMap>
 </mapper>

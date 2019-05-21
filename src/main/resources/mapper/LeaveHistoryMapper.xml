@@ -4,15 +4,15 @@
     <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.LeaveHistory">
         <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
         <!--TODO-->
-        <result property="employee" column="name" jdbcType="String" javaType="VARCHAR"/>
-        <result property="startTime" column="create_date" jdbcType="Date" javaType="DATE"/>
-        <result property="endTime" column="update_date" jdbcType="Date" javaType="DATE"/>
+        <!--<result property="employee" column="name" jdbcType="VARCHAR"/>-->
+        <result property="startTime" column="create_date" jdbcType="DATE"/>
+        <result property="endTime" column="update_date" jdbcType="DATE"/>
         <!--TODO-->
-        <result property="approveEmployee" column="update_date" jdbcType="Date" javaType="DATE"/>
-        <result property="approveDate" column="update_date" jdbcType="Date" javaType="DATE"/>
-        <result property="description" column="description" jdbcType="String" javaType="VARCHAR"/>
-        <result property="note" column="description" jdbcType="String" javaType="VARCHAR"/>
-        <result property="createDate" column="create_date" jdbcType="Date" javaType="DATE"/>
-        <result property="updateDate" column="update_date" jdbcType="Date" javaType="DATE"/>
+        <!--<result property="approveEmployee" column="update_date" jdbcType="DATE"/>-->
+        <result property="approveDate" column="update_date" jdbcType="DATE"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="note" column="description" jdbcType="VARCHAR"/>
+        <result property="createDate" column="create_date" jdbcType="DATE"/>
+        <result property="updateDate" column="update_date" jdbcType="DATE"/>
     </resultMap>
 </mapper>

@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.CompanyMapper">
     <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.Company">
-        <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
-        <result property="name" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
         <!--TODO-->
-        <result property="address" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="address" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="mobiles" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="mobiles" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="phones" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="phones" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="faxes" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="faxes" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="emails" column="name" jdbcType="String" javaType="VARCHAR"/>
+        <!--<result property="emails" column="name" jdbcType="VARCHAR"/>-->
         <!--TODO-->
-        <result property="principal" column="name" jdbcType="String" javaType="VARCHAR"/>
-        <result property="note" column="description" jdbcType="String" javaType="VARCHAR"/>
-        <result property="createDate" column="create_date" jdbcType="Date" javaType="DATE"/>
-        <result property="updateDate" column="update_date" jdbcType="Date" javaType="DATE"/>
+        <!--<result property="principal" column="name" jdbcType="VARCHAR"/>-->
+        <result property="note" column="description" jdbcType="VARCHAR"/>
+        <result property="createDate" column="create_date" jdbcType="DATE"/>
+        <result property="updateDate" column="update_date" jdbcType="DATE"/>
     </resultMap>
 </mapper>
