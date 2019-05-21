@@ -114,7 +114,8 @@
                 <includes>
                     <include>**/application.yaml</include>
                     <include>**/application-${profileActive}.yaml</include>
-                    <include>db/data/${profileActive}/*.sql</include>
+                    <include>db/data/data-${profileActive}*.sql</include>
+                    <include>db/schema-${profileActive}.sql</include>
                 </includes>
             </resource>
         </resources>
