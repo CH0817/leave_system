@@ -29,22 +29,22 @@ CREATE TABLE IF NOT EXISTS employee
 (
     id            VARCHAR(36) NOT NULL,
     name          VARCHAR(15) NOT NULL,
-    password      VARCHAR(36) NOT NULL,
+    password      VARCHAR(68) NOT NULL,
     company_id    VARCHAR(36) NOT NULL,
     work_space_id VARCHAR(36),
-    manager_id    VARCHAR(36) NOT NULL,
+    manager_id    VARCHAR(36),
     arrive_date   DATETIME    NOT NULL,
     leave_date    DATETIME,
     create_date   DATETIME    NOT NULL,
     update_date   DATETIME,
     PRIMARY KEY (id),
-    FOREIGN KEY fk_employee_company (company_id) REFERENCES company (id),
-    FOREIGN KEY fk_employee_work (work_space_id) REFERENCES company (id),
+    FOREIGN KEY (company_id) REFERENCES company (id),
+    FOREIGN KEY (work_space_id) REFERENCES company (id),
     FOREIGN KEY (manager_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
 ALTER TABLE company
-    ADD CONSTRAINT FOREIGN KEY (principal_id) REFERENCES employee (id);
+    ADD FOREIGN KEY (principal_id) REFERENCES employee (id);
 
 CREATE TABLE IF NOT EXISTS role
 (
