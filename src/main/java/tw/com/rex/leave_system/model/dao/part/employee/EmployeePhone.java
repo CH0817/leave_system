@@ -1,7 +1,8 @@
-package tw.com.rex.leave_system.model.dao;
+package tw.com.rex.leave_system.model.dao.part.employee;
 
 import lombok.Getter;
 import lombok.Setter;
+import tw.com.rex.leave_system.model.dao.Employee;
 import tw.com.rex.leave_system.model.dao.base.Phone;
 
 import java.util.Objects;

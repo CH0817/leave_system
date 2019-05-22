@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.CompanyPhoneMapper">
-    <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.CompanyPhone">
+    <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.part.company.CompanyPhone">
         <id column="phone" jdbcType="VARCHAR" property="phone"/>
         <association property="company" resultMap="tw.com.rex.leave_system.mapper.CompanyMapper.BaseResultMap"/>
     </resultMap>
@@ -10,11 +10,11 @@
         from company_phone
         where phone = #{phone,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.CompanyPhone">
+    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyPhone">
         insert into company_phone (phone, company_id)
         values (#{phone,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR})
     </insert>
-    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.CompanyPhone">
+    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyPhone">
         update company_phone
         set company_id = #{companyId,jdbcType=VARCHAR}
         where phone = #{phone,jdbcType=VARCHAR}

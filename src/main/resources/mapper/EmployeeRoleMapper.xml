@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.EmployeeRoleMapper">
-  <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.EmployeeRole">
+  <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.part.employee.EmployeeRole">
     <id column="employee_id" jdbcType="VARCHAR" property="employeeId" />
     <id column="role_id" jdbcType="VARCHAR" property="roleId" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
@@ -12,13 +12,13 @@
     where employee_id = #{employeeId,jdbcType=VARCHAR}
       and role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.EmployeeRole">
+  <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.employee.EmployeeRole">
     insert into employee_role (employee_id, role_id, create_date, 
       update_date)
     values (#{employeeId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updateDate,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.EmployeeRole">
+  <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.employee.EmployeeRole">
     update employee_role
     set create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP}

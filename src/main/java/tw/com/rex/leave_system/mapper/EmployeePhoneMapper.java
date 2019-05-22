@@ -1,7 +1,7 @@
 package tw.com.rex.leave_system.mapper;
 
 import java.util.List;
-import tw.com.rex.leave_system.model.dao.EmployeePhone;
+import tw.com.rex.leave_system.model.dao.part.employee.EmployeePhone;
 
 public interface EmployeePhoneMapper {
     int deleteByPrimaryKey(String phone);

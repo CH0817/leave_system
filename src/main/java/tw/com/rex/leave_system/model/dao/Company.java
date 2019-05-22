@@ -3,6 +3,7 @@ package tw.com.rex.leave_system.model.dao;
 import lombok.Getter;
 import lombok.Setter;
 import tw.com.rex.leave_system.model.dao.base.BaseDao;
+import tw.com.rex.leave_system.model.dao.part.company.*;
 
 import java.util.Objects;
 import java.util.Set;

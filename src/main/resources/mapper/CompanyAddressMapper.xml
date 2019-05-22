@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.CompanyAddressMapper">
-    <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.CompanyAddress">
+    <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
         <id column="company_id" jdbcType="VARCHAR" property="company.id"/>
         <result column="zip" jdbcType="VARCHAR" property="zip"/>
         <result column="address" jdbcType="VARCHAR" property="address"/>
@@ -12,11 +12,11 @@
         from company_address
         where company_id = #{companyId,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.CompanyAddress">
+    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
         insert into company_address (company_id, zip, address)
         values (#{companyId,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
     </insert>
-    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.CompanyAddress">
+    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
         update company_address
         set zip     = #{zip,jdbcType=VARCHAR},
             address = #{address,jdbcType=VARCHAR}

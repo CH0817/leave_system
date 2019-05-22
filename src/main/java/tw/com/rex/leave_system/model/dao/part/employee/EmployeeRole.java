@@ -1,4 +1,4 @@
-package tw.com.rex.leave_system.model.dao;
+package tw.com.rex.leave_system.model.dao.part.employee;
 
 import java.util.Date;
 import tw.com.rex.leave_system.model.dao.base.BaseDao;

@@ -1,7 +1,7 @@
 package tw.com.rex.leave_system.mapper;
 
 import java.util.List;
-import tw.com.rex.leave_system.model.dao.CompanyFax;
+import tw.com.rex.leave_system.model.dao.part.company.CompanyFax;
 
 public interface CompanyFaxMapper {
     int deleteByPrimaryKey(String fax);

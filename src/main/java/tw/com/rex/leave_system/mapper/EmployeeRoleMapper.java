@@ -2,7 +2,7 @@ package tw.com.rex.leave_system.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import tw.com.rex.leave_system.model.dao.EmployeeRole;
+import tw.com.rex.leave_system.model.dao.part.employee.EmployeeRole;
 
 public interface EmployeeRoleMapper {
     int deleteByPrimaryKey(@Param("employeeId") String employeeId, @Param("roleId") String roleId);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.EmployeeAddressMapper">
-  <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.EmployeeAddress">
+  <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.part.employee.EmployeeAddress">
     <id column="employee_id" jdbcType="VARCHAR" property="employeeId" />
     <result column="zip" jdbcType="VARCHAR" property="zip" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -10,13 +10,13 @@
     delete from employee_address
     where employee_id = #{employeeId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.EmployeeAddress">
+  <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.employee.EmployeeAddress">
     insert into employee_address (employee_id, zip, address
       )
     values (#{employeeId,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.EmployeeAddress">
+  <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.employee.EmployeeAddress">
     update employee_address
     set zip = #{zip,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR}
