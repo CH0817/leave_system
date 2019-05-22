@@ -101,17 +101,19 @@ CREATE TABLE IF NOT EXISTS company_phone
 
 CREATE TABLE IF NOT EXISTS employee_mobile
 (
+    id          VARCHAR(36) NOT NULL,
     mobile      VARCHAR(20) NOT NULL UNIQUE,
     employee_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (mobile),
+    PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS company_mobile
 (
+    id         VARCHAR(36) NOT NULL,
     mobile     VARCHAR(20) NOT NULL UNIQUE,
     company_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (mobile),
+    PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
