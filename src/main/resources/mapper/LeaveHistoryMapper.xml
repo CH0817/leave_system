@@ -1,52 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.LeaveHistoryMapper">
-  <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.LeaveHistory">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
-    <result column="employee_id" jdbcType="VARCHAR" property="employeeId" />
-    <result column="approve_manager_id" jdbcType="VARCHAR" property="approveManagerId" />
-    <result column="approve_date" jdbcType="TIMESTAMP" property="approveDate" />
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from leave_history
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.LeaveHistory">
-    insert into leave_history (id, start_time, end_time, 
-      create_date, update_date, employee_id, 
-      approve_manager_id, approve_date, description
-      )
-    values (#{id,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{employeeId,jdbcType=VARCHAR}, 
-      #{approveManagerId,jdbcType=VARCHAR}, #{approveDate,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.LeaveHistory">
-    update leave_history
-    set start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
-      employee_id = #{employeeId,jdbcType=VARCHAR},
-      approve_manager_id = #{approveManagerId,jdbcType=VARCHAR},
-      approve_date = #{approveDate,jdbcType=TIMESTAMP},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, start_time, end_time, create_date, update_date, employee_id, approve_manager_id, 
-    approve_date, description
-    from leave_history
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, start_time, end_time, create_date, update_date, employee_id, approve_manager_id, 
-    approve_date, description
-    from leave_history
-  </select>
+    <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.LeaveHistory">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="approve_date" jdbcType="TIMESTAMP" property="approveDate"/>
+        <result column="description" jdbcType="LONGVARCHAR" property="description"/>
+        <association property="employee" resultMap="tw.com.rex.leave_system.mapper.EmployeeMapper.BaseResultMap"/>
+        <association property="approveManager" resultMap="tw.com.rex.leave_system.mapper.EmployeeMapper.BaseResultMap"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE
+        FROM leave_history
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insertSelective" parameterType="tw.com.rex.leave_system.model.dao.LeaveHistory">
+        <selectKey keyProperty="id" keyColumn="id" order="BEFORE" resultType="string">
+            SELECT UUID() FROM dual
+        </selectKey>
+        INSERT INTO leave_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="endTime != null">end_time,</if>
+            <if test="employee != null and employee.id != null">employee_id,</if>
+            <if test="approveManager != null and approveManager.id != null">approve_manager_id,</if>
+            <if test="approveDate != null">approve_date,</if>
+            <if test="description != null">description,</if>
+            <if test="createDate != null">create_date,</if>
+            <if test="updateDate != null">leave_date,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+            <if test="startTime != null">#{startTime,jdbcType=TIMESTAMP},</if>
+            <if test="endTime != null">#{endTime,jdbcType=TIMESTAMP},</if>
+            <if test="employee != null and employee.id != null">#{employee.id,jdbcType=VARCHAR},</if>
+            <if test="approveManager != null and approveManager.id != null">#{approveManager.id,jdbcType=VARCHAR},</if>
+            <if test="approveDate != null">#{approveDate,jdbcType=TIMESTAMP},</if>
+            <if test="description != null">#{description,jdbcType=LONGVARCHAR},</if>
+            <if test="createDate != null">#{createDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateDate != null">#{updateDate,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateSelectiveByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.LeaveHistory">
+        UPDATE leave_history
+        <set>
+            <if test="startTime != null">start_time = #{startTime,jdbcType=TIMESTAMP},</if>
+            <if test="endTime != null">end_time =#{endTime,jdbcType=TIMESTAMP},</if>
+            <if test="employee != null and employee.id != null">employee_id = #{employee.id,jdbcType=VARCHAR},</if>
+            <if test="approveManager != null and approveManager.id != null">
+                approve_manager_id = #{approveManager.id,jdbcType=VARCHAR},
+            </if>
+            <if test="approveDate != null">approve_date = #{approveDate,jdbcType=TIMESTAMP},</if>
+            <if test="description != null">description = #{description,jdbcType=LONGVARCHAR},</if>
+            <if test="createDate != null">create_date =#{createDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateDate != null">update_date =#{updateDate,jdbcType=TIMESTAMP},</if>
+        </set>
+        <where>
+            id = #{id,jdbcType=VARCHAR}
+        </where>
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT id,
+               start_time,
+               end_time,
+               create_date,
+               update_date,
+               employee_id,
+               approve_manager_id,
+               approve_date,
+               description
+        FROM leave_history
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT id,
+               start_time,
+               end_time,
+               create_date,
+               update_date,
+               employee_id,
+               approve_manager_id,
+               approve_date,
+               description
+        FROM leave_history
+    </select>
 </mapper>

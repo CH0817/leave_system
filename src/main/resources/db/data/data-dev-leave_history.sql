@@ -1,0 +1,1 @@
+INSERT INTO leave_history (id, start_time, end_time, create_date, employee_id) VALUES ('a', NOW(), NOW(), NOW(), 'a')
