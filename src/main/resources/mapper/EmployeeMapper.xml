@@ -21,7 +21,7 @@
     </delete>
     <insert id="insertSelective" parameterType="tw.com.rex.leave_system.model.dao.Employee">
         <selectKey keyProperty="id" keyColumn="id" order="BEFORE" resultType="string">
-            SELECT UUID() FROM dual;
+            SELECT UUID() FROM dual
         </selectKey>
         INSERT INTO employee
         <trim prefix="(" suffix=")" suffixOverrides=",">
