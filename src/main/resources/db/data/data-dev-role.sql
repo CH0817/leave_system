@@ -1,0 +1,1 @@
+INSERT INTO role (id, name, create_date) VALUES ('a', 'test_role', NOW())

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Role extends BaseDao {
 
     private String name;
-    private Date createDate;
+    private String description;
 
     @Override
     public boolean equals(Object o) {
@@ -26,11 +26,11 @@ public class Role extends BaseDao {
             return false;
         }
         Role role = (Role) o;
-        return name.equals(role.name) && Objects.equals(createDate, role.createDate);
+        return name.equals(role.name) && Objects.equals(description, role.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, createDate);
+        return Objects.hash(super.hashCode(), name, description);
     }
 }
