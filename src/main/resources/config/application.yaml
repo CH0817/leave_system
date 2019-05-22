@@ -15,5 +15,4 @@ logging:
           accountbookservice:
             mapper: debug
 mybatis:
-  type-aliases-package: tw.com.rex.leave_system.model.dao
-  mapper-locations: mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
