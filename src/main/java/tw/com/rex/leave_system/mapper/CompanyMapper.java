@@ -10,11 +10,11 @@ public interface CompanyMapper {
 
     int deleteByPrimaryKey(String id);
 
-    int insert(Company record);
+    int insertSelective(Company record);
 
     Company selectByPrimaryKey(String id);
 
     List<Company> selectAll();
 
-    int updateByPrimaryKey(Company record);
+    int updateSelectiveByPrimaryKey(Company record);
 }

@@ -13,27 +13,46 @@
         from company
         where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.Company">
-        insert into company (id, name, principal_id,
-                             create_date, update_date)
-        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{principal.id,jdbcType=VARCHAR},
-                #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+    <insert id="insertSelective" parameterType="tw.com.rex.leave_system.model.dao.Company">
+        <selectKey keyProperty="id" keyColumn="id" order="BEFORE" resultType="string">
+            SELECT UUID() FROM dual
+        </selectKey>
+        INSERT INTO company
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="principal != null and principal.id != null">principal_id,</if>
+            <if test="createDate != null">create_date,</if>
+            <if test="updateDate != null">update_date,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+            <if test="principal != null and principal.id != null">#{principal.id,jdbcType=VARCHAR},</if>
+            <if test="createDate != null">#{createDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateDate != null">#{updateDate,jdbcType=TIMESTAMP},</if>
+        </trim>
     </insert>
-    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.Company">
-        update company
-        set name         = #{name,jdbcType=VARCHAR},
-            principal_id = #{principal.id,jdbcType=VARCHAR},
-            create_date  = #{createDate,jdbcType=TIMESTAMP},
-            update_date  = #{updateDate,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=VARCHAR}
+    <update id="updateSelectiveByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.Company">
+        UPDATE company
+        <set>
+            <if test="name != null">name =#{name,jdbcType=VARCHAR},</if>
+            <if test="principal != null and principal.id != null">principal_id = #{principal.id,jdbcType=VARCHAR},</if>
+            <if test="createDate != null">create_date = #{createDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateDate != null">update_date = #{updateDate,jdbcType=TIMESTAMP},</if>
+        </set>
+        <where>
+            id = #{id,jdbcType=VARCHAR}
+        </where>
     </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select id, name, principal_id, create_date, update_date
-        from company
-        where id = #{id,jdbcType=VARCHAR}
+        SELECT id, name, principal_id, create_date, update_date
+        FROM company
+        WHERE id = #{id,jdbcType=VARCHAR}
     </select>
     <select id="selectAll" resultMap="BaseResultMap">
-        select id, name, principal_id, create_date, update_date
-        from company
+        SELECT id, name, principal_id, create_date, update_date
+        FROM company
     </select>
 </mapper>
