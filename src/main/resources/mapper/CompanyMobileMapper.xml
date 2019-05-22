@@ -2,30 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.rex.leave_system.mapper.CompanyMobileMapper">
     <resultMap id="BaseResultMap" type="tw.com.rex.leave_system.model.dao.part.company.CompanyMobile">
-        <id column="mobile" jdbcType="VARCHAR" property="mobile"/>
-        <association property="company" resultMap="tw.com.rex.leave_system.mapper.CompanyMapper.BaseResultMap"/>
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="company_id" jdbcType="VARCHAR" property="company.id"/>
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        delete
-        from company_mobile
-        where mobile = #{mobile,jdbcType=VARCHAR}
+        DELETE
+        FROM company_mobile
+        WHERE id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyMobile">
-        insert into company_mobile (mobile, company_id)
-        values (#{mobile,jdbcType=VARCHAR}, #{company.id,jdbcType=VARCHAR})
+    <insert id="insertSelective" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyMobile">
+        <selectKey keyProperty="id" keyColumn="id" order="BEFORE" resultType="string">
+            SELECT UUID() FROM dual
+        </selectKey>
+        INSERT INTO company_mobile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="mobile != null">mobile,</if>
+            <if test="company != null and company.id != null">company_id,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+            <if test="mobile != null">#{mobile,jdbcType=VARCHAR},</if>
+            <if test="company != null and company.id != null">#{company.id,jdbcType=VARCHAR},</if>
+        </trim>
     </insert>
-    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyMobile">
-        update company_mobile
-        set company_id = #{company.id,jdbcType=VARCHAR}
-        where mobile = #{mobile,jdbcType=VARCHAR}
+    <update id="updateSelectiveByPrimaryKey"
+            parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyMobile">
+        UPDATE company_mobile
+        <set>
+            <if test="mobile != null">mobile = #{mobile,jdbcType=VARCHAR}</if>
+            <if test="company != null and company.id != null">company_id = #{company.id,jdbcType=VARCHAR}</if>
+        </set>
+        <where>
+            id = #{id,jdbcType=VARCHAR}
+        </where>
     </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select mobile, company_id
-        from company_mobile
-        where mobile = #{mobile,jdbcType=VARCHAR}
+    <select id="selectByPrimaryKey" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        SELECT mobile, company_id
+        FROM company_mobile
+        WHERE id = #{id,jdbcType=VARCHAR}
     </select>
     <select id="selectAll" resultMap="BaseResultMap">
-        select mobile, company_id
-        from company_mobile
+        SELECT mobile, company_id
+        FROM company_mobile
     </select>
 </mapper>

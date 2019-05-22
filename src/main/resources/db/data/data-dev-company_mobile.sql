@@ -1,0 +1,1 @@
+INSERT INTO company_mobile (id, mobile, company_id) VALUES ('a', '0911222333', 'a')

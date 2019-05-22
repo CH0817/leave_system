@@ -6,11 +6,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Setter
 public class Mobile implements Serializable {
 
+    private String id;
     private String mobile;
 
     @Override
@@ -18,4 +20,20 @@ public class Mobile implements Serializable {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Mobile)) {
+            return false;
+        }
+        Mobile mobile1 = (Mobile) o;
+        return id.equals(mobile1.id) && mobile.equals(mobile1.mobile);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, mobile);
+    }
 }
