@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS leave_history
 
 CREATE TABLE IF NOT EXISTS employee_phone
 (
+    id          VARCHAR(36) NOT NULL,
     phone       VARCHAR(20) NOT NULL UNIQUE,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (phone),
@@ -93,6 +94,7 @@ CREATE TABLE IF NOT EXISTS employee_phone
 
 CREATE TABLE IF NOT EXISTS company_phone
 (
+    id         VARCHAR(36) NOT NULL,
     phone      VARCHAR(20) NOT NULL UNIQUE,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (phone),
@@ -119,6 +121,7 @@ CREATE TABLE IF NOT EXISTS company_mobile
 
 CREATE TABLE IF NOT EXISTS employee_fax
 (
+    id          VARCHAR(36) NOT NULL,
     fax         VARCHAR(20) NOT NULL UNIQUE,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (fax),
@@ -127,6 +130,7 @@ CREATE TABLE IF NOT EXISTS employee_fax
 
 CREATE TABLE IF NOT EXISTS company_fax
 (
+    id         VARCHAR(36) NOT NULL,
     fax        VARCHAR(20) NOT NULL UNIQUE,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (fax),
@@ -135,6 +139,7 @@ CREATE TABLE IF NOT EXISTS company_fax
 
 CREATE TABLE IF NOT EXISTS employee_email
 (
+    id          VARCHAR(36) NOT NULL,
     email       VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (email, employee_id),
@@ -143,6 +148,7 @@ CREATE TABLE IF NOT EXISTS employee_email
 
 CREATE TABLE IF NOT EXISTS company_email
 (
+    id         VARCHAR(36) NOT NULL,
     email      VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (email, company_id),
@@ -151,6 +157,7 @@ CREATE TABLE IF NOT EXISTS company_email
 
 CREATE TABLE IF NOT EXISTS employee_address
 (
+    id          VARCHAR(36)  NOT NULL,
     zip         VARCHAR(10),
     address     VARCHAR(100) NOT NULL,
     employee_id VARCHAR(36)  NOT NULL,
@@ -160,6 +167,7 @@ CREATE TABLE IF NOT EXISTS employee_address
 
 CREATE TABLE IF NOT EXISTS company_address
 (
+    id         VARCHAR(36)  NOT NULL,
     zip        VARCHAR(10),
     address    VARCHAR(100) NOT NULL,
     company_id VARCHAR(36)  NOT NULL,
