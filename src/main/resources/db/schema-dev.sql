@@ -86,7 +86,8 @@ CREATE TABLE IF NOT EXISTS leave_history
 CREATE TABLE IF NOT EXISTS employee_phone
 (
     id          VARCHAR(36) NOT NULL,
-    phone       VARCHAR(20) NOT NULL UNIQUE,
+    area_code   VARCHAR(5)  NOT NULL,
+    phone       VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
@@ -95,7 +96,8 @@ CREATE TABLE IF NOT EXISTS employee_phone
 CREATE TABLE IF NOT EXISTS company_phone
 (
     id         VARCHAR(36) NOT NULL,
-    phone      VARCHAR(20) NOT NULL UNIQUE,
+    area_code  VARCHAR(5)  NOT NULL,
+    phone      VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
@@ -104,7 +106,7 @@ CREATE TABLE IF NOT EXISTS company_phone
 CREATE TABLE IF NOT EXISTS employee_mobile
 (
     id          VARCHAR(36) NOT NULL,
-    mobile      VARCHAR(20) NOT NULL UNIQUE,
+    mobile      VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS employee_mobile
 CREATE TABLE IF NOT EXISTS company_mobile
 (
     id         VARCHAR(36) NOT NULL,
-    mobile     VARCHAR(20) NOT NULL UNIQUE,
+    mobile     VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
@@ -122,7 +124,8 @@ CREATE TABLE IF NOT EXISTS company_mobile
 CREATE TABLE IF NOT EXISTS employee_fax
 (
     id          VARCHAR(36) NOT NULL,
-    fax         VARCHAR(20) NOT NULL UNIQUE,
+    area_code   VARCHAR(5)  NOT NULL,
+    fax         VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
@@ -131,7 +134,8 @@ CREATE TABLE IF NOT EXISTS employee_fax
 CREATE TABLE IF NOT EXISTS company_fax
 (
     id         VARCHAR(36) NOT NULL,
-    fax        VARCHAR(20) NOT NULL UNIQUE,
+    area_code  VARCHAR(5)  NOT NULL,
+    fax        VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
