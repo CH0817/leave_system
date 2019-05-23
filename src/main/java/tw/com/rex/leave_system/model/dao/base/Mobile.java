@@ -29,11 +29,11 @@ public class Mobile implements Serializable {
             return false;
         }
         Mobile mobile1 = (Mobile) o;
-        return id.equals(mobile1.id) && mobile.equals(mobile1.mobile);
+        return mobile.equals(mobile1.mobile);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, mobile);
+        return Objects.hash(mobile);
     }
 }
