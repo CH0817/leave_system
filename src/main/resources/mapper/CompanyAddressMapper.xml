@@ -10,25 +10,46 @@
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from company_address
-        where company_id = #{companyId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
-        insert into company_address (company_id, zip, address)
-        values (#{companyId,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+    <insert id="insertSelective" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
+        <selectKey keyProperty="id" keyColumn="id" order="BEFORE" resultType="string">
+            SELECT UUID() FROM dual
+        </selectKey>
+        insert into company_address
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="zip != null">zip,</if>
+            <if test="address != null">address,</if>
+            <if test="company != null and company.id != null">company_id,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+            <if test="zip != null">#{zip,jdbcType=VARCHAR},</if>
+            <if test="address != null">#{address,jdbcType=VARCHAR},</if>
+            <if test="company != null and company.id != null">#{company.id,jdbcType=VARCHAR},</if>
+        </trim>
     </insert>
-    <update id="updateByPrimaryKey" parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
+    <update id="updateSelectiveByPrimaryKey"
+            parameterType="tw.com.rex.leave_system.model.dao.part.company.CompanyAddress">
         update company_address
-        set zip     = #{zip,jdbcType=VARCHAR},
-            address = #{address,jdbcType=VARCHAR}
-        where company_id = #{companyId,jdbcType=VARCHAR}
+        <set>
+            <if test="zip != null">zip = #{zip,jdbcType=VARCHAR},</if>
+            <if test="address != null">address = #{zip,jdbcType=VARCHAR},</if>
+            <if test="company != null and company.id != null">company_id = #{company.id,jdbcType=VARCHAR},</if>
+        </set>
+        <where>
+            id = #{id,jdbcType=VARCHAR}
+        </where>
     </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select company_id, zip, address
+        select *
         from company_address
         where company_id = #{companyId,jdbcType=VARCHAR}
     </select>
     <select id="selectAll" resultMap="BaseResultMap">
-        select company_id, zip, address
+        select *
         from company_address
     </select>
 </mapper>

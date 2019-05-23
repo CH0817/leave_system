@@ -1,0 +1,1 @@
+INSERT INTO company_address (id, zip, address, company_id) VALUES ('a', '111', '測試地址', 'a')
