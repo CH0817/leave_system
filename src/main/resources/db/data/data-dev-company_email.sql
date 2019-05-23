@@ -1,0 +1,1 @@
+INSERT INTO company_email (id, email, company_id) VALUES ('a', 'aa@aa.com', 'a')

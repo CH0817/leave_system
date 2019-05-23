@@ -6,11 +6,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Setter
 public class Email implements Serializable {
 
+    private String id;
     private String email;
 
     @Override
@@ -18,4 +20,20 @@ public class Email implements Serializable {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Email)) {
+            return false;
+        }
+        Email email1 = (Email) o;
+        return email.equals(email1.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
 }
