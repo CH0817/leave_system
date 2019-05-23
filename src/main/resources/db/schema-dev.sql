@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS employee_phone
     id          VARCHAR(36) NOT NULL,
     phone       VARCHAR(20) NOT NULL UNIQUE,
     employee_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (phone),
+    PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS company_phone
     id         VARCHAR(36) NOT NULL,
     phone      VARCHAR(20) NOT NULL UNIQUE,
     company_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (phone),
+    PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS employee_fax
     id          VARCHAR(36) NOT NULL,
     fax         VARCHAR(20) NOT NULL UNIQUE,
     employee_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (fax),
+    PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS company_fax
     id         VARCHAR(36) NOT NULL,
     fax        VARCHAR(20) NOT NULL UNIQUE,
     company_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (fax),
+    PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS employee_email
     id          VARCHAR(36) NOT NULL,
     email       VARCHAR(20) NOT NULL,
     employee_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (email, employee_id),
+    PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS company_email
     id         VARCHAR(36) NOT NULL,
     email      VARCHAR(20) NOT NULL,
     company_id VARCHAR(36) NOT NULL,
-    PRIMARY KEY (email, company_id),
+    PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS employee_address
     zip         VARCHAR(10),
     address     VARCHAR(100) NOT NULL,
     employee_id VARCHAR(36)  NOT NULL,
-    PRIMARY KEY (employee_id),
+    PRIMARY KEY (id),
     FOREIGN KEY (employee_id) REFERENCES employee (id)
 ) ENGINE = InnoDB;
 
@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS company_address
     zip        VARCHAR(10),
     address    VARCHAR(100) NOT NULL,
     company_id VARCHAR(36)  NOT NULL,
-    PRIMARY KEY (company_id),
+    PRIMARY KEY (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 ) ENGINE = InnoDB;
 
