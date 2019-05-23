@@ -1,0 +1,1 @@
+INSERT INTO company_phone (id, area_code, phone, company_id) VALUES ('a', '02', '29991111', 'a')

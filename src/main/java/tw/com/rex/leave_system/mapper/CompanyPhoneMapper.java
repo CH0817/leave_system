@@ -8,13 +8,13 @@ import tw.com.rex.leave_system.model.dao.part.company.CompanyPhone;
 @Mapper
 public interface CompanyPhoneMapper {
 
-    int deleteByPrimaryKey(String phone);
+    int deleteByPrimaryKey(String id);
 
-    int insert(CompanyPhone record);
+    int insertSelective(CompanyPhone record);
 
-    CompanyPhone selectByPrimaryKey(String phone);
+    CompanyPhone selectByPrimaryKey(String id);
 
     List<CompanyPhone> selectAll();
 
-    int updateByPrimaryKey(CompanyPhone record);
+    int updateSelectiveByPrimaryKey(CompanyPhone record);
 }
