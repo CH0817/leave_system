@@ -1,12 +1,12 @@
 package tw.com.rex.leave_system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.com.rex.leave_system.mapper.EmployeeMapper;
 import tw.com.rex.leave_system.model.dao.Employee;
 import tw.com.rex.leave_system.service.EmployeeService;
-import tw.com.rex.leave_system.util.EncryptUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -16,15 +16,17 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeMapper mapper;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeMapper mapper) {
+    public EmployeeServiceImpl(EmployeeMapper mapper, PasswordEncoder passwordEncoder) {
         this.mapper = mapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public Employee register(Employee employee) {
-        employee.setPassword(EncryptUtils.encrypt(employee.getPassword()));
+        employee.setPassword(passwordEncoder.encode(employee.getPassword()));
         employee.setCreateDate(new Date());
         mapper.insertSelective(employee);
         return employee;
